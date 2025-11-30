@@ -11,6 +11,13 @@ package finalpackage;
 public class Finalproject {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Integer[] arr = {3, 5, 7, 9, 11, null, 15};
+        BinaryTree<Integer> bt = new BinaryTree<>(arr);
+        System.out.println(bt.toString());
+        System.out.println(bt.isComplete());
+        System.out.println(bt.contains(15));
+        
+        
+        
     }
 }
