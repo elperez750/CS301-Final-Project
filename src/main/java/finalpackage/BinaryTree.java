@@ -21,6 +21,13 @@ public class BinaryTree<T> {
 
         
     public BinaryTree(T[] values) {
+          if (values == null || values.length == 0 || values[0] == null) {
+            this.value = null;
+            this.left = null;
+            this.right = null;
+            return;
+        }
+    
         
         // Perform check to see if parent is null and has children.
         // If that is the case then the array is invalid and we do not create Binary tree.
@@ -32,15 +39,21 @@ public class BinaryTree<T> {
         }
         
         BinaryTree<T> root = BinaryTreeBuilder(values, 0);
+       
         this.value = root.value;
         this.left = root.left;
         this.right = root.right;
 
+            
+       
+       
         
     }
     
     
     private BinaryTree<T> BinaryTreeBuilder(T[] values, int index) {
+        
+     
         
         // We check if index is out of bounds or if the value is null
         if (index >= values.length || values[index] == null) {
@@ -98,6 +111,60 @@ public class BinaryTree<T> {
         return containsHelper(this, value);
         
     }
+    
+    public boolean isBalanced(){
+        return isBalancedHelper(this) != -1;
+        
+    }
+    
+    
+    public int isBalancedHelper(BinaryTree<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        
+        int leftHeight = isBalancedHelper(node.left);
+        int rightHeight = isBalancedHelper(node.right);
+        
+        if(Math.abs(leftHeight - rightHeight) > 1)  {
+            return -1;
+        }
+        
+        if (leftHeight == -1 || rightHeight == -1) {
+            return -1;
+        }
+        
+        return 1 + Math.max(leftHeight, leftHeight);
+        
+       
+        
+    }
+    
+    
+    
+    public int height() {
+        if (this.value == null) {
+            return -1;
+        }
+        
+        
+    
+        
+        return heightHelper(this);
+        
+    }
+    
+    public int heightHelper(BinaryTree<T> node) {
+        if (node == null) {
+            return -1;
+        }
+        
+        int leftHeight = heightHelper(node.left);
+        int rightHeight = heightHelper(node.right);
+        
+        return 1 + Math.max(rightHeight, leftHeight);
+    }
+    
     
     
     private boolean containsHelper(BinaryTree<T> node, T value) {
