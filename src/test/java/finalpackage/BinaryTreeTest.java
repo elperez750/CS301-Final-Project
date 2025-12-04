@@ -39,8 +39,44 @@ public class BinaryTreeTest {
     /**
      * Test of toString method, of class BinaryTree.
      */
+    
+    
+@Test
+public void testConstructor() {
+    System.out.println("Constructor");
+    
+    // Test 1: Valid array creates tree correctly
+    Integer[] arr = {1, 2, 3, 4, 5};
+    BinaryTree<Integer> tree = new BinaryTree<>(arr);
+    
+    // Verify it was built correctly by checking:
+    assertNotNull(tree);  // Tree exists
+    assertEquals("[1, 2, 3, 4, 5, null, null, null, null, null, null]", tree.toString());
+    assertTrue(tree.contains(1));  // Root is there
+    assertTrue(tree.contains(5));  // Other values are there
+    
+  
+    
+   
+    
+    // Test 4: Invalid array throws exception
+    try {
+        Integer[] invalid = {1, null, null, 4}; // 4's parent is null
+        BinaryTree<Integer> badTree = new BinaryTree<>(invalid);
+        fail("Should have thrown IllegalArgumentException");
+    } catch (IllegalArgumentException e) {
+        // Expected - test passes
+        assertTrue(e.getMessage().contains("child exists but parent is null"));
+    }
+    
+    // Test 5: Same test with String type
+    String[] strArr = {"A", "B", "C"};
+    BinaryTree<String> strTree = new BinaryTree<>(strArr);
+    assertTrue(strTree.contains("A"));
+    assertTrue(strTree.contains("B"));
+}
 
-   @Test
+ @Test
 public void testToString() {
     System.out.println("toString");
     
