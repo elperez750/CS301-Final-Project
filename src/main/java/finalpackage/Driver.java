@@ -7,8 +7,10 @@ package finalpackage;
 /**
  *
  * @author elper2
+ * Time taken to complete: 12 hours
+ * Used AI to generate Javadoc comments and help with test cases. Coding implementation of binary tree is my own work.
  */
-public class Finalproject {
+public class Driver {
 
     public static void main(String[] args) {
         Integer[] arr = {3, 5, 7, 9, 11, null, 15};
@@ -33,9 +35,14 @@ public class Finalproject {
         Integer[] empty = {}; // Empty tree (should be balanced)
         Integer[] justNull = {null}; // Just null (depends on your implementation)
         BinaryTree<Integer> tstbt = new BinaryTree<>(unbalanced4);
+        BinaryTree<Integer> treeToCompare = new BinaryTree<>(unbalanced2);
+        BinaryTree<Integer> equalTree = new BinaryTree<>(unbalanced4);
+        
         System.out.println("Tree: " + tstbt.toString());
         System.out.println("Is balanced: " + tstbt.isBalanced());
         System.out.println("Height of tree " + tstbt.height());
+        System.out.println("Are trees equal? " + tstbt.equals(equalTree));
+        System.out.println("Are trees equal? " + tstbt.equals(treeToCompare));
         System.out.println();
         
         
